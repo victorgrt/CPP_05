@@ -1,7 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 #include <stdlib.h>     /* srand, rand */
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("/home")
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("victor")
 {
 	std::cout << GREEN << "Constructeur par défaut called." << RESET << std::endl;
 }
@@ -34,27 +34,32 @@ std::string	RobotomyRequestForm::getTarget() const
 	return this->_target;
 }
 
-/* RobotomyRequestForm: Required grades: sign 72, exec 45
-Makes some drilling noises. Then, informs that <target> 
-has been robotomized
-successfully 50% of the time. Otherwise, informs that 
-the robotomy failed*/
-
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (this->getSigned() == true && executor.getGrade() < this->getExecG())
 	{
-		std::cout << BLUE << "🦾🤖🛠️ **Drill noise**" << RESET << std::endl;
+		std::cout << BLUE << "***🦾🤖🛠️ Drilling noise 🛠️🤖🦾***" << RESET << std::endl;
 		srand(time(0)); 
 		int	random = rand();
-		std::cout << random << std::endl;
 		if (random % 2 == 0)
-			std::cout << BLUE << "Target robotomization SUCCESS ! (" << random << ")" << RESET << std::endl;
+			std::cout << BLUE << this->getTarget() << " robotomization " << MAGENTA << "SUCCES" << BLUE << " ! (" << random << ")" << RESET << std::endl;
 		else
-			std::cout << BLUE << "Target robotomization FAILED ! (" << random << ")" << RESET << std::endl;
+			std::cout << BLUE << this->getTarget() << " robotomization " << MAGENTA << "FAILED" << BLUE << " ! (" << random << ")" << RESET << std::endl;
 	}
 	else if (!(executor.getGrade() < this->getExecG()))
 		throw AForm::GradeTooLowException();
 	else if (this->getSigned() == false)
 		std::cout << RED << "ERROR : This needs to be signed first !!" << RESET << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& file)
+{
+    const std::string name = file.getName();
+	std::string tmp;
+	if (file.getSigned() == true)
+		tmp = "true";
+	else
+		tmp = "false";
+	os << GREEN << "File# - " << name << " data : target [" << file.getTarget() <<  "], signed[" << tmp << "], signature_lvl[" << file.getSignG() << "], execution_lvl[" << file.getExecG() << "]." << RESET;
+	return os;
 }

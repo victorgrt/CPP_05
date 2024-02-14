@@ -2,6 +2,8 @@
 #include "AForm.hpp"
 #include "ShruberryCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
 int	main(void)
 {
 	// ShruberryCreationForm formulaire;
@@ -28,9 +30,18 @@ int	main(void)
 	formulaire3.execute(vivi);
 
 	std::cout << "\n\n";
-	RobotomyRequestForm form4("/home/victor/CPP_05/ex02");
+	RobotomyRequestForm form4("Obama");
+	std::cout << form4 << std::endl;
 	form4.execute(vivi);
 	vivi.signForm(form4);
 	form4.execute(vivi);
+
+	std::cout << "\n\n";
+	PresidentialPardonForm	president("Donald Duck");
+	std::cout << president << std::endl;
+	president.execute(vivi);
+	vivi.signForm(president);
+	president.execute(vivi);
+
 	return (0);
 }
