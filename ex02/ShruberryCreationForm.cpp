@@ -5,23 +5,23 @@
 
 ShruberryCreationForm::ShruberryCreationForm() : AForm("ShruberryCreationForm", 145, 137), _target("/home")
 {
-	std::cout << GREEN << "Default Target For ShruberryCreationForm (/home)." << RESET << std::endl;
+	std::cout << GREEN << "[CONSTRUCTEUR] - ShruberryCreationForm created with default target (/home)." << RESET << std::endl;
 }
 
 ShruberryCreationForm::ShruberryCreationForm(std::string target) : AForm("ShruberryCreationForm", 145, 137), _target(target)
 {
-	std::cout << GREEN << "SchrubberyCreationForm created with " << target << " as path." << RESET << std::endl;
+	std::cout << GREEN << "[CONSTRUCTEUR] - SchrubberyCreationForm created with " << target << " as path." << RESET << std::endl;
 }
 
 
 ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm& copie) : AForm(copie), _target(copie.getTarget())
 {
-	std::cout << BLUE << "Constructeur par copie called." << RESET << std::endl;
+	std::cout << BLUE << "[CONSTRUCTEUR] - ShruberryCreationForm copié." << RESET << std::endl;
 }
 
 ShruberryCreationForm::~ShruberryCreationForm()
 {
-	std::cout << RED << "Destructeur called." << RESET << std::endl;
+	std::cout << RED << "[DESTRUCTEUR] - ShruberryCreationForm détruit." << RESET << std::endl;
 }
 
 ShruberryCreationForm& ShruberryCreationForm::operator=(const ShruberryCreationForm& copie)

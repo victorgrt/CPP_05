@@ -2,7 +2,7 @@
 
 AForm::AForm() : _fname("default"), _signed(false), _sign_grade(150), _exec_grade(150)
 {
-	std::cout << GREEN << "Constructeur par défaut called." << RESET << std::endl;
+	std::cout << GREEN << "Formulaire par défaut créer." << RESET << std::endl;
 }
 
 AForm::AForm(std::string newname, int sign_grade, int exec_grade) : _fname(newname), _sign_grade(sign_grade), _exec_grade(exec_grade)
@@ -16,7 +16,7 @@ AForm::AForm(std::string newname, int sign_grade, int exec_grade) : _fname(newna
 
 AForm::AForm(const AForm& copie) : _fname(copie.getName()), _signed(false), _sign_grade(copie.getSignG()), _exec_grade(copie.getExecG())
 {
-	std::cout << BLUE << "Form copied from " << copie.getName() << RESET << std::endl;
+	std::cout << BLUE << "Formulaire copied from " << copie.getName() << RESET << std::endl;
 }
 
 AForm::~AForm()
@@ -85,6 +85,6 @@ std::ostream& operator<<(std::ostream& os, const AForm& file) {
 		tmp = "true";
 	else
 		tmp = "false";
-	os << GREEN << "File# - " << name << " data : signed[" << tmp << "], signature_lvl[" << file.getSignG() << "], execution_lvl[" << file.getExecG() << "]." << RESET;
+	os << GREEN << "File - " << name << " - data : signed[" << tmp << "], signature_lvl[" << file.getSignG() << "], execution_lvl[" << file.getExecG() << "]." << RESET;
 	return os;
 }

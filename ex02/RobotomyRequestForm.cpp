@@ -3,22 +3,22 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("victor")
 {
-	std::cout << GREEN << "Constructeur par défaut called." << RESET << std::endl;
+	std::cout << GREEN << "[CONSTRUCTEUR] - RobotomyRequestForm created (default values)." << RESET << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
-	std::cout << GREEN << "Constructeur par défaut called." << RESET << std::endl;
+	std::cout << GREEN << "[CONSTRUCTEUR] - RobotomyRequestForm created with " << target << "as its target." << RESET << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copie) : AForm(copie), _target(copie.getTarget())
 {
-	std::cout << BLUE << "Constructeur par copie called." << RESET << std::endl;
+	std::cout << BLUE << "[CONSTRUCTEUR] - RobotomyRequestForm copied." << RESET << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	std::cout << RED << "Destructeur called." << RESET << std::endl;
+	std::cout << RED << "[DESTRUCTEUR] - RobotomyRequestForm détruit." << RESET << std::endl;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copie)

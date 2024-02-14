@@ -2,29 +2,31 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target("victor")
 {
-	std::cout << GREEN << "Constructeur par défaut called." << RESET << std::endl;
+	std::cout << GREEN << "[CONSTRUCTEUR] - Presidential Form par default created." << RESET << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
-	std::cout << GREEN << "Constructeur par défaut called." << RESET << std::endl;
+	std::cout << GREEN << "[CONSTRUCTEUR] - PresidentialPardonForm " << target << " created." << RESET << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copie) : AForm(copie), _target(copie.getTarget())
 {
 	(void) copie;
-	std::cout << BLUE << "Constructeur par copie called." << RESET << std::endl;
+	std::cout << BLUE << "[CONSTRUCTEUR] - PresidentialPardonForm copied." << RESET << std::endl;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-	std::cout << RED << "Destructeur called." << RESET << std::endl;
+	std::cout << RED << "[DESTRUCTEUR] - PresidentialPardonForm détruit." << RESET << std::endl;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copie)
 {
-	(void) copie;
+	if (this != &copie)
+		return *this;
 	std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
+	return (*this);
 }
 
 std::string	PresidentialPardonForm::getTarget() const
