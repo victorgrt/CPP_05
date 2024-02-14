@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShruberryCreationForm.hpp"
-
+#include "RobotomyRequestForm.hpp"
 int	main(void)
 {
 	// ShruberryCreationForm formulaire;
@@ -27,5 +27,10 @@ int	main(void)
 	vivi.signForm(formulaire3);
 	formulaire3.execute(vivi);
 
+	std::cout << "\n\n";
+	RobotomyRequestForm form4("/home/victor/CPP_05/ex02");
+	form4.execute(vivi);
+	vivi.signForm(form4);
+	form4.execute(vivi);
 	return (0);
 }

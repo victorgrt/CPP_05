@@ -26,8 +26,10 @@ ShruberryCreationForm::~ShruberryCreationForm()
 
 ShruberryCreationForm& ShruberryCreationForm::operator=(const ShruberryCreationForm& copie)
 {
-	(void) copie;
+	if (this != &copie)
+		return *this;
 	std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
+	return (*this);
 }
 
 std::string	ShruberryCreationForm::getTarget() const
@@ -53,8 +55,6 @@ void ShruberryCreationForm::execute(Bureaucrat const & executor) const //add bur
 		throw AForm::GradeTooLowException();
 	else if (this->getSigned() == false)
 		std::cout << RED << "ERROR : This needs to be signed first!!" << RESET << std::endl;
-
-
 }
 
 std::ostream& operator<<(std::ostream& os, const ShruberryCreationForm& file) {
