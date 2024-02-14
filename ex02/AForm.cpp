@@ -14,7 +14,7 @@ AForm::AForm(std::string newname, int sign_grade, int exec_grade) : _fname(newna
 	this->_signed = false;
 }
 
-AForm::AForm(const AForm& copie) : _fname(copie.getName()), _exec_grade(copie.getExecG()), _sign_grade(copie.getSignG()), _signed(copie.getSigned())
+AForm::AForm(const AForm& copie) : _fname(copie.getName()), _signed(false), _sign_grade(copie.getSignG()), _exec_grade(copie.getExecG())
 {
 	std::cout << BLUE << "Form copied from " << copie.getName() << RESET << std::endl;
 }
@@ -24,11 +24,11 @@ AForm::~AForm()
 	std::cout << RED << this->getName() << " detruit par le feu." << RESET << std::endl;
 }
 
-AForm& AForm::operator=(const AForm& copie)
-{
-	std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
-	return (*this);
-}
+// AForm& AForm::operator=(const AForm& copie)
+// {
+// 	std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
+// 	return (*this);
+// }
 
 bool	AForm::getSigned() const
 {

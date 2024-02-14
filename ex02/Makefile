@@ -19,7 +19,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm ShruberryCreationForm.txt
 
 re: fclean all
 

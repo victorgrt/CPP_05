@@ -12,7 +12,7 @@ int	main(void)
 	// formulaire2.execute();
 	std::cout << YELLOW << "=== CREATION ===" << RESET << std::endl;
 	Bureaucrat noob("noob", 150);
-	ShruberryCreationForm formulaire3("/mnt/nfs/homes/vgoret/Travail/CPP_MODULE_2/CPP_05/ex02");
+	ShruberryCreationForm formulaire3("/home/victor/CPP_05/ex02");
 	try
 	{
 		std::cout << formulaire3 << std::endl;

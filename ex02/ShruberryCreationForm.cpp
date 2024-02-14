@@ -14,7 +14,7 @@ ShruberryCreationForm::ShruberryCreationForm(std::string target) : AForm("Shrube
 }
 
 
-ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm& copie) : _target(copie.getTarget())
+ShruberryCreationForm::ShruberryCreationForm(const ShruberryCreationForm& copie) : AForm(copie), _target(copie.getTarget())
 {
 	std::cout << BLUE << "Constructeur par copie called." << RESET << std::endl;
 }
@@ -56,7 +56,6 @@ void ShruberryCreationForm::execute(Bureaucrat const & executor) const //add bur
 
 
 }
-
 
 std::ostream& operator<<(std::ostream& os, const ShruberryCreationForm& file) {
     const std::string name = file.getName();
