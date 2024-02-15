@@ -14,11 +14,10 @@ Form::Form(std::string newname, int sign_grade, int exec_grade) : _fname(newname
 	this->_signed = false;
 }
 
-// Form::Form(const Form& copie)
-// {
-// 	(void) copie;
-// 	std::cout << BLUE << "Constructeur par copie called." << RESET << std::endl;
-// }
+Form::Form(const Form& copie) : _fname(copie.getName()), _exec_grade(copie.getExecG()), _sign_grade(copie.getSignG()), _signed(copie.getSigned())
+{
+	std::cout << BLUE << "Form copied from " << copie.getName() << RESET << std::endl;
+}
 
 Form::~Form()
 {
@@ -27,8 +26,8 @@ Form::~Form()
 
 Form& Form::operator=(const Form& copie)
 {
-	(void) copie;
 	std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
+	return (*this);
 }
 
 bool	Form::getSigned() const

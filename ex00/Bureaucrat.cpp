@@ -56,12 +56,12 @@ void	Bureaucrat::deGrade() //baisse la note 150 = pire
 //exception
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return (RED "BUREAUCRAT ERROR CATCHED => Grade Too Low !" RESET);
+	return (RED "Grade Too Low !" RESET);
 }
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return (RED "BUREAUCRAT ERROR CATCHED => Grade Too High !" RESET);
+	return (RED "Grade Too High !" RESET);
 }
 
 void	Bureaucrat::setGrade(int grade)
