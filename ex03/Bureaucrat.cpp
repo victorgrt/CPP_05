@@ -3,24 +3,24 @@
 Bureaucrat::Bureaucrat() : _name("default")
 {
 	setGrade(150);
-	std::cout << GREEN << "Default Bureaucrat created (default name and grade 150)." << RESET << std::endl;
+	// std::cout << GREEN << "Default Bureaucrat created (default name and grade 150)." << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
 	setGrade(grade);
-	std::cout << GREEN << this->getName() << " succesfully arrived at the office with a grade of " << this->getGrade() << "." << RESET << std::endl;
+	// std::cout << GREEN << this->getName() << " succesfully arrived at the office with a grade of " << this->getGrade() << "." << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copie) : _name(copie.getName())
 {
 	setGrade(copie.getGrade());
-	std::cout << BLUE << "Constructeur par copie called." << RESET << std::endl;
+	// std::cout << BLUE << "Constructeur par copie called." << RESET << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << RED << this->getName() << " left the office in a hurry..." << RESET << std::endl;
+	// std::cout << RED << this->getName() << " left the office in a hurry..." << RESET << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copie)
@@ -56,12 +56,12 @@ void	Bureaucrat::deGrade() //baisse la note 150 = pire
 //exception
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return (RED "BUREAUCRAT ERROR CATCHED => Grade Too Low !" RESET);
+	return (RED "ERROR BUREAUCRAT CATCHED =>  Grade Too LOW !" RESET);
 }
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return (RED "BUREAUCRAT ERROR CATCHED => Grade Too High !" RESET);
+	return (RED "ERROR BUREAUCRAT CATCHED => Bureaucrat Grade Too HIGH !" RESET);
 }
 
 void	Bureaucrat::setGrade(int grade)
@@ -78,4 +78,10 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& boug) {
     const std::string name = boug.getName(); // Utilisation de la fonction membre toFloat
     os << GREEN << name << " has a grade of " << BLUE << boug.getGrade() << RESET;
     return os;
+}
+
+void	Bureaucrat::signForm(AForm &form)
+{
+	form.beSigned(*this);
+	std::cout << BLUE << this->getName() << " signed the form \"" << form.getName() << "\"." << RESET << std::endl;
 }
