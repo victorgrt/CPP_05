@@ -29,7 +29,6 @@ class AForm
 		virtual ~AForm();
 		AForm& operator=(const AForm& copie);
 
-		void	setGrade(int grade);
 		const std::string	getName() const;
 		int	getExecG() const;
 		int	getSignG() const;

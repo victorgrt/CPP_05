@@ -24,11 +24,13 @@ AForm::~AForm()
 	// std::cout << RED << this->getName() << " detruit par le feu." << RESET << std::endl;
 }
 
-// AForm& AForm::operator=(const AForm& copie)
-// {
+AForm& AForm::operator=(const AForm& copie)
+{
+	if (this != &copie)
+		return (*this);
 // 	std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
-// 	return (*this);
-// }
+	return (*this);
+}
 
 bool	AForm::getSigned() const
 {

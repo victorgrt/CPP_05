@@ -3,24 +3,20 @@
 Bureaucrat::Bureaucrat() : _name("default")
 {
 	setGrade(150);
-	// std::cout << GREEN << "Default Bureaucrat created (default name and grade 150)." << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
 	setGrade(grade);
-	// std::cout << GREEN << this->getName() << " succesfully arrived at the office with a grade of " << this->getGrade() << "." << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copie) : _name(copie.getName())
 {
 	setGrade(copie.getGrade());
-	// std::cout << BLUE << "Constructeur par copie called." << RESET << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	// std::cout << RED << this->getName() << " left the office in a hurry..." << RESET << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copie)
@@ -43,17 +39,16 @@ int Bureaucrat::getGrade() const
 	return (this->_grade);
 }
 
-void	Bureaucrat::inGrade() //augmente la note 1 = meilleur
+void	Bureaucrat::inGrade()
 {
-	setGrade(this->_grade - 1); //execption
+	setGrade(this->_grade - 1);
 }
 
-void	Bureaucrat::deGrade() //baisse la note 150 = pire
+void	Bureaucrat::deGrade()
 {
-	setGrade(this->_grade + 1); //execption
+	setGrade(this->_grade + 1);
 }
 
-//exception
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
 	return (RED "ERROR BUREAUCRAT CATCHED =>  Grade Too LOW !" RESET);
@@ -75,7 +70,7 @@ void	Bureaucrat::setGrade(int grade)
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& boug) {
-    const std::string name = boug.getName(); // Utilisation de la fonction membre toFloat
+    const std::string name = boug.getName();
     os << GREEN << name << " has a grade of " << BLUE << boug.getGrade() << RESET;
     return os;
 }

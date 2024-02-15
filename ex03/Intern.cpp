@@ -2,12 +2,16 @@
 
 Intern::Intern()
 {
+	for (int i = 0; i < 4; i++)
+		this->_forms[i] = NULL;
 	// std::cout << GREEN << "Intern par default creer." << RESET << std::endl;
 }
 
 Intern::Intern(const Intern& copie)
-{
-	(void) copie;
+{	
+	for (int i = 0; i < 4; i++)
+		this->_forms[i] = NULL;
+	*this = copie;
 	// std::cout << BLUE << "Intern par copie created." << RESET << std::endl;
 }
 
@@ -20,14 +24,10 @@ Intern::~Intern()
 
 Intern& Intern::operator=(const Intern& copie)
 {
-	(void) copie;
 	// std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
+	if (this != &copie)
+		return (*this);
 	return (*this);
-}
-
-AForm*	makePresident(std::string target)
-{
-	return (new PresidentialPardonForm(target));
 }
 
 AForm*	Intern::makeForm(std::string name, const std::string target)
