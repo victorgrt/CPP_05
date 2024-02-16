@@ -40,8 +40,8 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	{
 		std::cout << BLUE << "👨‍⚖️ Zaphod Beeblebrox : \"" << this->getTarget() << " je te pardonne fils <3\" 👨‍⚖️" << RESET << std::endl;
 	}
-	else if (!(executor.getGrade() < this->getExecG()))
-		throw AForm::GradeTooLowException();
+	else if (executor.getGrade() > this->getExecG())
+		throw AForm::GradeTooHighException();
 	else if (this->getSigned() == false)
 		std::cout << RED << "ERROR : This needs to be signed first !!" << RESET << std::endl;
 }

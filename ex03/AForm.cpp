@@ -75,8 +75,8 @@ void	AForm::beSigned(Bureaucrat &boug)
 	else
 	{
 		this->_signed = false;
-		std::cout << YELLOW << this->_fname << " canNOT be signed by " << boug.getName() << ". Value set to false." << RESET << std::endl; 
-		throw AForm::GradeTooLowException();
+		std::cout << YELLOW << this->_fname << " canNOT be signed by " << boug.getName() << " because his grade is too high. Value set to false." << RESET << std::endl; 
+		throw AForm::GradeTooHighException();
 	}
 }
 

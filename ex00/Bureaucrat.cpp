@@ -43,39 +43,38 @@ int Bureaucrat::getGrade() const
 	return (this->_grade);
 }
 
-void	Bureaucrat::inGrade() //augmente la note 1 = meilleur
+void	Bureaucrat::inGrade()
 {
-	setGrade(this->_grade - 1); //execption
+	setGrade(this->_grade - 1);
 }
 
-void	Bureaucrat::deGrade() //baisse la note 150 = pire
+void	Bureaucrat::deGrade()
 {
-	setGrade(this->_grade + 1); //execption
+	setGrade(this->_grade + 1);
 }
 
-//exception
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return (RED "Grade Too Low !" RESET);
+	return (RED "BUREAUCRAT ERROR CATCHED => Grade Too Low !" RESET);
 }
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return (RED "Grade Too High !" RESET);
+	return (RED "BUREAUCRAT ERROR CATCHED => Grade Too High !" RESET);
 }
 
 void	Bureaucrat::setGrade(int grade)
 {
 	if (grade > 150)
-		throw Bureaucrat::GradeTooHighException();
-	else if (grade < 1)
 		throw Bureaucrat::GradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 	else
 		this->_grade = grade;
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& boug) {
-    const std::string name = boug.getName(); // Utilisation de la fonction membre toFloat
+    const std::string name = boug.getName();
     os << GREEN << name << " has a grade of " << BLUE << boug.getGrade() << RESET;
     return os;
 }

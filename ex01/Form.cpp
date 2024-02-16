@@ -8,15 +8,20 @@ Form::Form() : _fname("default"), _signed(false), _sign_grade(150), _exec_grade(
 Form::Form(std::string newname, int sign_grade, int exec_grade) : _fname(newname), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
 	if (exec_grade < 1 || sign_grade < 1)
-		throw Form::GradeTooLowException();
-	else if (sign_grade > 150 || exec_grade > 150)
 		throw Form::GradeTooHighException();
+	else if (sign_grade > 150 || exec_grade > 150)
+		throw Form::GradeTooLowException();
 	this->_signed = false;
 }
 
-Form::Form(const Form& copie) : _fname(copie.getName()), _exec_grade(copie.getExecG()), _sign_grade(copie.getSignG()), _signed(copie.getSigned())
+Form::Form(const Form& copie) : _fname(copie.getName()), _signed(false), _sign_grade(copie.getSignG()), _exec_grade(copie.getExecG())
 {
-	std::cout << BLUE << "Form copied from " << copie.getName() << RESET << std::endl;
+	if (_exec_grade < 1 || _sign_grade < 1)
+		throw Form::GradeTooHighException();
+	else if (_sign_grade > 150 || _exec_grade > 150)
+		throw Form::GradeTooLowException();
+	std::cout << BLUE << "Constructeur par copie called." << RESET << std::endl;
+	*this = copie;
 }
 
 Form::~Form()
@@ -26,6 +31,8 @@ Form::~Form()
 
 Form& Form::operator=(const Form& copie)
 {
+	if (this != &copie)
+		return (*this);
 	std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
 	return (*this);
 }
@@ -73,8 +80,8 @@ void	Form::beSigned(Bureaucrat &boug)
 	else
 	{
 		this->_signed = false;
-		std::cout << YELLOW << this->_fname << " canNOT be signed by " << boug.getName() << ". Value set to false." << RESET << std::endl; 
-		throw Form::GradeTooLowException();
+		std::cout << YELLOW << this->_fname << " canNOT be signed by " << boug.getName() << " because his grade is too high. Value set to false." << RESET << std::endl; 
+		throw Form::GradeTooHighException();
 	}
 }
 

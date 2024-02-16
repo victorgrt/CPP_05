@@ -47,7 +47,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 			std::cout << BLUE << this->getTarget() << " robotomization " << MAGENTA << "FAILED" << BLUE << " ! (" << random << ")" << RESET << std::endl;
 	}
 	else if (!(executor.getGrade() < this->getExecG()))
-		throw AForm::GradeTooLowException();
+		throw AForm::GradeTooHighException();
 	else if (this->getSigned() == false)
 		std::cout << RED << "ERROR : This needs to be signed first !!" << RESET << std::endl;
 }

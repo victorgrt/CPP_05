@@ -29,7 +29,6 @@ class Form
 		~Form();
 		Form& operator=(const Form& copie);
 
-		void	setGrade(int grade);
 		const std::string	getName() const;
 		int	getExecG() const;
 		int	getSignG() const;

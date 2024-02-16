@@ -25,7 +25,6 @@ class Intern
 	~Intern();
 	Intern& operator=(const Intern& copie);
 	AForm*	makeForm(std::string name, std::string target);
-	const AForm*	getForms();
 
 	class NotFound : public std::exception {
 	public:

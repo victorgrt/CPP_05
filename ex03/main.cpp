@@ -8,7 +8,7 @@
 int	main(void)
 {
 	Bureaucrat general("general", 1);
-	Bureaucrat toolow("noobie", 150);
+	Bureaucrat toohigh("noobie", 150);
 	PresidentialPardonForm president("Obama");
 	ShruberryCreationForm tree("/tmp");
 	RobotomyRequestForm robot("le correcteur");
@@ -24,7 +24,7 @@ int	main(void)
 	{
 		Bureaucrat toohigh("toogood", 151);
 	}
-	catch(Bureaucrat::GradeTooHighException& e)
+	catch(Bureaucrat::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
@@ -32,7 +32,7 @@ int	main(void)
 	{
 		Bureaucrat toobad("toobad", -1);
 	}
-	catch(Bureaucrat::GradeTooLowException& e)
+	catch(Bureaucrat::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
@@ -44,28 +44,28 @@ int	main(void)
 		general.signForm(robot);
 	}
 	
-	std::cout << "=== ERROR BUREAUCRAT GRADE TOO LOW ===" << std::endl;
+	std::cout << "=== ERROR BUREAUCRAT GRADE TOO HIGH TO EXECUTE ===" << std::endl;
 	try
 	{
-		president.execute(toolow);
+		president.execute(toohigh);
 	}
-	catch(AForm::GradeTooLowException& e)
+	catch(AForm::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 	try
 	{
-		tree.execute(toolow);
+		tree.execute(toohigh);
 	}
-	catch(AForm::GradeTooLowException& e)
+	catch(AForm::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 	try
 	{
-		robot.execute(toolow);
+		robot.execute(toohigh);
 	}
-	catch(AForm::GradeTooLowException& e)
+	catch(AForm::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << '\n';
 	}

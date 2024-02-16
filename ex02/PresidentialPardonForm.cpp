@@ -12,7 +12,6 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copie) : AForm(copie), _target(copie.getTarget())
 {
-	(void) copie;
 	std::cout << BLUE << "[CONSTRUCTEUR] - PresidentialPardonForm copied." << RESET << std::endl;
 }
 
@@ -41,7 +40,7 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 		std::cout << BLUE << "👨‍⚖️ Zaphod Beeblebrox : \"" << this->getTarget() << " je te pardonne fils <3\" 👨‍⚖️" << RESET << std::endl;
 	}
 	else if (!(executor.getGrade() < this->getExecG()))
-		throw AForm::GradeTooLowException();
+		throw AForm::GradeTooHighException();
 	else if (this->getSigned() == false)
 		std::cout << RED << "ERROR : This needs to be signed first !!" << RESET << std::endl;
 }

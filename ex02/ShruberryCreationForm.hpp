@@ -27,9 +27,7 @@ class ShruberryCreationForm : public AForm
 	ShruberryCreationForm& operator=(const ShruberryCreationForm& copie);
 
 	std::string	getTarget() const;
-
-	// void execute() const; //add bureaucrate
-	void execute(Bureaucrat const & executor) const; //add bureaucrate
+	void execute(Bureaucrat const & executor) const;
 
 };
 

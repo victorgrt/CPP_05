@@ -36,12 +36,13 @@ AForm*	Intern::makeForm(std::string name, const std::string target)
 	this->_forms[1] = new ShruberryCreationForm(target);
 	this->_forms[2] = new RobotomyRequestForm(target);
 	
-	if (target.empty())
+	if (target.empty() || name.empty())
 		throw WrongArgs();
 	for (int i = 0; i < 3; i++)
 	{
 		if (name == this->_forms[i]->getName())
 		{
+			std::cout << BLUE << "Intern created a " << name << " form." << RESET << std::endl;
 			return (this->_forms[i]);
 		}
 	}

@@ -32,27 +32,26 @@
 			std::cout << Pro << std::endl;
 		}
 	}
-	std::cout << YELLOW << "\n=== GRADE TOO LOW ===" << RESET << std::endl;
-	try {
-		// Bureaucrat("Minus", -1);
-		std::cout << Roger << std::endl;
-		Roger.inGrade();
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
 	std::cout << YELLOW << "\n=== GRADE TOO HIGH ===" << RESET << std::endl;
 	try
 	{
-		// Bureaucrat("Maxus", 151);
+		std::cout << Roger << std::endl;
+		Roger.inGrade();
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << YELLOW << "\n=== GRADE TOO LOW ===" << RESET << std::endl;
+	try
+	{
 		std::cout << Louis << std::endl;
 		Louis.deGrade(); //too high donc stop ici
 		std::cout << Louis << std::endl;
 		Louis.deGrade();
 		std::cout << Louis << std::endl;
 	}
-	catch(Bureaucrat::GradeTooHighException& e)
+	catch(Bureaucrat::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}

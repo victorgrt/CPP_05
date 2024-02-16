@@ -13,7 +13,7 @@ int	main(void)
 		// Form tooBig2("formulaire #3", 15, 159);
 		std::cout << "SKIPPED A CAUSE DE DU CATCH " << std::endl; 
 	}
-	catch(Form::GradeTooHighException& e)
+	catch(Form::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
@@ -24,7 +24,7 @@ int	main(void)
 		// Form toolow2("formulaire #5", -10, 130);
 		std::cout << "SKIPPED A CAUSE DE DU CATCH " << std::endl;
 	}
-	catch(Form::GradeTooLowException& e)
+	catch(Form::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
@@ -38,11 +38,29 @@ int	main(void)
 		vivi.signForm(lll);
 		std::cout << lll << std::endl;
 		vivi.setGrade(150);
-		lll.beSigned(vivi);
 		vivi.signForm(lll);
 		std::cout << "SKIPPED A CAUSE DE DU CATCH " << lll << std::endl;
 	}
-	catch(Form::GradeTooLowException& e)
+	catch(Form::GradeTooHighException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << MAGENTA << "=== BUREAUCRAT ERROR ===" << RESET << std::endl;
+	try
+	{
+		Bureaucrat noobie("noob", 151);
+		
+	}
+	catch(Bureaucrat::GradeTooLowException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Bureaucrat noobie("noob", 0);
+		
+	}
+	catch(Bureaucrat::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << '\n';
 	}

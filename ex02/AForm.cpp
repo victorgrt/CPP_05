@@ -8,9 +8,9 @@ AForm::AForm() : _fname("default"), _signed(false), _sign_grade(150), _exec_grad
 AForm::AForm(std::string newname, int sign_grade, int exec_grade) : _fname(newname), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
 	if (exec_grade < 1 || sign_grade < 1)
-		throw AForm::GradeTooLowException();
-	else if (sign_grade > 150 || exec_grade > 150)
 		throw AForm::GradeTooHighException();
+	else if (sign_grade > 150 || exec_grade > 150)
+		throw AForm::GradeTooLowException();
 	this->_signed = false;
 }
 
@@ -24,11 +24,13 @@ AForm::~AForm()
 	std::cout << RED << this->getName() << " detruit par le feu." << RESET << std::endl;
 }
 
-// AForm& AForm::operator=(const AForm& copie)
-// {
-// 	std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
-// 	return (*this);
-// }
+AForm& AForm::operator=(const AForm& copie)
+{
+	if (this != &copie)
+		return (*this);
+	std::cout << YELLOW << "Operateur d\'affectation called." << RESET << std::endl;	return *this;
+	return (*this);
+}
 
 bool	AForm::getSigned() const
 {
@@ -73,8 +75,8 @@ void	AForm::beSigned(Bureaucrat &boug)
 	else
 	{
 		this->_signed = false;
-		std::cout << YELLOW << this->_fname << " canNOT be signed by " << boug.getName() << ". Value set to false." << RESET << std::endl; 
-		throw AForm::GradeTooLowException();
+		std::cout << YELLOW << this->_fname << " canNOT be signed by " << boug.getName() << " because his grade is too high. Value set to false." << RESET << std::endl; 
+		throw AForm::GradeTooHighException();
 	}
 }
 

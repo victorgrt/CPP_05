@@ -51,7 +51,7 @@ void ShruberryCreationForm::execute(Bureaucrat const & executor) const //add bur
 		myFile.close();
 	}
 	else if (!(executor.getGrade() < this->getExecG()))
-		throw AForm::GradeTooLowException();
+		throw AForm::GradeTooHighException();
 	else if (this->getSigned() == false)
 		std::cout << RED << "ERROR : This needs to be signed first!!" << RESET << std::endl;
 }
